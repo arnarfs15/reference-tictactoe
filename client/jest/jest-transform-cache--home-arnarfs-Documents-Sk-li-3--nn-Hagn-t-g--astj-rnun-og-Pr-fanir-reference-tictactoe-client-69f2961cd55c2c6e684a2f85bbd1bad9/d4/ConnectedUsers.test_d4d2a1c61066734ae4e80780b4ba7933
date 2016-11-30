@@ -1,0 +1,73 @@
+/* istanbul ignore next */'use strict';var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/status/ConnectedUsers.test.js';var /* istanbul ignore next */_reactDom = require('react-dom'); /* istanbul ignore next */var _reactDom2 = _interopRequireDefault(_reactDom);
+var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_enzyme = require('enzyme');
+
+var /* istanbul ignore next */_ConnectedUsers = require('./ConnectedUsers'); /* istanbul ignore next */var _ConnectedUsers2 = _interopRequireDefault(_ConnectedUsers);
+var /* istanbul ignore next */_fakeSocket = require('_test/fakeSocket'); /* istanbul ignore next */var _fakeSocket2 = _interopRequireDefault(_fakeSocket);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('Connected users - socket io', function () {
+
+    var div, component;
+
+    var socket = /* istanbul ignore next */(0, _fakeSocket2.default)();
+
+    var ConnectedUsers;
+
+    beforeEach(function () {
+        ConnectedUsers = /* istanbul ignore next */(0, _ConnectedUsers2.default)(inject({
+            socket }));
+
+
+        div = document.createElement('div');
+        component = /* istanbul ignore next */(0, _enzyme.shallow)( /* istanbul ignore next */_react2.default.createElement(ConnectedUsers, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this }), div);
+    });
+
+    it('should subscribe to userJoined', function () {
+        expect(socket.listeners['userJoined']).toBeTruthy();
+    });
+
+    it('should subscribe to userAcknowledged', function () {
+        expect(socket.listeners['userAcknowledged']).toBeTruthy();
+    });
+
+    it('should subscribe to userLeft', function () {
+        expect(socket.listeners['userLeft']).toBeTruthy();
+    });
+
+    it('should subscribe to userChanged', function () {
+        expect(socket.listeners['userChanged']).toBeTruthy();
+    });
+
+    it('should subscribe to usersConnected', function () {
+        expect(socket.listeners['usersConnected']).toBeTruthy();
+    });
+
+    it('should render users when usersConnected', function () {
+        socket.listeners['usersConnected']({ "1": { "clientId": 1, "userName": "Newbie#1" }, "2": { "clientId": 2, "userName": "Newbie#2" } });
+
+        expect(component.text()).toContain('Newbie#1');
+        expect(component.text()).toContain('Newbie#2');
+
+    });
+
+    it('should remove user when userLeft', function () {
+        socket.listeners['usersConnected']({ "1": { "clientId": 1, "userName": "Newbie#1" }, "2": { "clientId": 2, "userName": "Newbie#2" } });
+        socket.listeners['userLeft']({ "clientId": 1 });
+
+        expect(component.text()).not.toContain('Newbie#1');
+    });
+
+    it('should render allocated user name when userAcknowledged', function () {
+        socket.listeners['userAcknowledged']({ "clientId": 1, "userName": "Newbie#1" });
+
+        expect(component.find('input').props().value).toContain('Newbie#1');
+    });
+
+    it('should update user when userChanged', function () {
+        socket.listeners['usersConnected']({ "1": { "clientId": 1, "userName": "Newbie#1" }, "2": { "clientId": 2, "userName": "Newbie#2" } });
+        socket.listeners['userChanged']({ "clientId": 1, "userName": "Not new any more" });
+
+        expect(component.text()).toContain('Not new any more');
+    });
+
+});

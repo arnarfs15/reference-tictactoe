@@ -1,0 +1,78 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/status/ConnectedUsers.js';exports.default =
+
+
+
+
+function (injected) {
+    const socket = injected('socket');
+
+    class ConnectedUsers extends /* istanbul ignore next */_react2.default.Component {
+        constructor() {
+            super();
+            this.state = {
+                users: {},
+                me: {
+                    userName: "" } };
+
+
+            this.userNameChanged = this.userNameChanged.bind(this);
+        }
+        componentWillMount() {
+            socket.on('userJoined', user => {
+                var users = this.state.users;
+                users[user.clientId] = user;
+                this.setState({ users: users });
+            });
+            socket.on('userAcknowledged', user => {
+                this.setState({ me: user });
+            });
+            socket.on('userLeft', user => {
+                var users = this.state.users;
+                delete users[user.clientId];
+                this.setState({ users: users });
+            });
+            socket.on('userChanged', user => {
+                var users = this.state.users;
+                users[user.clientId] = user;
+                if (user.clientId === this.state.me.clientId) {
+                    this.setState({
+                        me: user });
+
+                }
+                this.setState({
+                    users: users });
+
+            });
+            socket.on('usersConnected', users => {
+                this.setState({ users: users });
+            });
+
+        }
+        userNameChanged(event) {
+            socket.emit('changeUserName', { userName: event.target.value });
+        }
+        render() {
+            var users = /* istanbul ignore next */_lodash2.default.map(this.state.users, user => {
+                return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'li', /* istanbul ignore next */{ key: user.clientId, __source: { fileName: _jsxFileName, lineNumber: 56 }, __self: this }, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 56 }, __self: this }, user.clientId), /* istanbul ignore next */' : ', /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 56 }, __self: this }, user.userName)));
+            });
+
+            return (
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'ConnectedUsers', __source: { fileName: _jsxFileName, lineNumber: 60 }, __self: this },
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'p', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 61 }, __self: this }),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, /* istanbul ignore next */'Me:'),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'input', /* istanbul ignore next */{ type: 'text', value: this.state.me.userName, onChange: this.userNameChanged, __source: { fileName: _jsxFileName, lineNumber: 63 }, __self: this }),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'p', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 64 }, __self: this }),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'UserList', __source: { fileName: _jsxFileName, lineNumber: 65 }, __self: this },
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 66 }, __self: this }, /* istanbul ignore next */'Connected:'),
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'ul', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 67 }, __self: this },
+                            users))));
+
+
+
+
+
+        }}
+
+    return ConnectedUsers;
+
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);var /* istanbul ignore next */_lodash = require('lodash'); /* istanbul ignore next */var _lodash2 = _interopRequireDefault(_lodash); /* istanbul ignore next */require('./ConnectedUsers.css'); /* istanbul ignore next */function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

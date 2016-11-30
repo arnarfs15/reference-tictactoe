@@ -1,0 +1,33 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/status/ConnectedClients.js';exports.default =
+
+function (injected) {
+    const socket = injected('socket');
+
+    class ConnectedClients extends /* istanbul ignore next */_react2.default.Component {
+        constructor() {
+            super();
+            this.state = {
+                stats: {} };
+
+
+
+        }
+        componentWillMount() {
+            socket.on('stats', data => {
+                this.setState({
+                    stats: data });
+
+            });
+
+        }
+        render() {
+            return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'ConnectedClients', __source: { fileName: _jsxFileName, lineNumber: 24 }, __self: this },
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'p', /* istanbul ignore next */{ className: 'App-intro', __source: { fileName: _jsxFileName, lineNumber: 25 }, __self: this },
+                        this.state.stats.numClients, /* istanbul ignore next */' connected clients')));
+
+
+        }}
+
+    return ConnectedClients;
+
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

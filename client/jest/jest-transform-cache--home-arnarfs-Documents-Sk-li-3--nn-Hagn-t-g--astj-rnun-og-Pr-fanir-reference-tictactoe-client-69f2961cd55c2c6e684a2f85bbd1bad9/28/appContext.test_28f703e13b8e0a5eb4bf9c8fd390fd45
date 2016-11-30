@@ -1,0 +1,17 @@
+/* istanbul ignore next */'use strict';var /* istanbul ignore next */_appContext = require('appContext'); /* istanbul ignore next */var _appContext2 = _interopRequireDefault(_appContext);
+var /* istanbul ignore next */_fakeIo = require('_test/fakeIo'); /* istanbul ignore next */var _fakeIo2 = _interopRequireDefault(_fakeIo);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('app context initialization', function () {
+
+    it('should load app context without throwing', function () {
+        const io = /* istanbul ignore next */(0, _fakeIo2.default)();
+        /* istanbul ignore next */(0, _appContext2.default)(inject({
+            io,
+            env: "test" }));
+
+
+        //TODO Assert on io messages emitted when bootstrapping client.
+
+    });
+
+});

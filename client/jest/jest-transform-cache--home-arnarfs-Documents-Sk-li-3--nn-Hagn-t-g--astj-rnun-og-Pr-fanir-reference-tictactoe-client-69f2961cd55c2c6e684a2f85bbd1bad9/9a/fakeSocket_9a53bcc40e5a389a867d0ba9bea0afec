@@ -1,0 +1,9 @@
+/* istanbul ignore next */"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = function () {
+    var socket = {
+        listeners: {},
+        on: function (event, callback) {
+            socket.listeners[event] = callback;
+        } };
+
+    return socket;
+};

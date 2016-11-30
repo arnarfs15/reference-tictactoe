@@ -1,0 +1,41 @@
+/* istanbul ignore next */'use strict';var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/status/ConnectedClients.test.js';var /* istanbul ignore next */_ConnectedClients = require('./ConnectedClients'); /* istanbul ignore next */var _ConnectedClients2 = _interopRequireDefault(_ConnectedClients);
+var /* istanbul ignore next */_reactDom = require('react-dom'); /* istanbul ignore next */var _reactDom2 = _interopRequireDefault(_reactDom);
+var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_enzyme = require('enzyme'); /* istanbul ignore next */function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe("Connected socket clients component", function () {
+
+    var div, component;
+
+    var socket = {
+        listeners: {},
+
+        on: function (event, callback) {
+            socket.listeners[event] = callback;
+        } };
+
+    var ConnectedClients;
+
+    beforeEach(function () {
+        ConnectedClients = /* istanbul ignore next */(0, _ConnectedClients2.default)(inject({
+            socket }));
+
+        div = document.createElement('div');
+        component = /* istanbul ignore next */(0, _enzyme.shallow)( /* istanbul ignore next */_react2.default.createElement(ConnectedClients, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 24 }, __self: this }), div);
+    });
+
+    it('should render without error', function () {
+
+    });
+
+    it('should subscribe to stats message', function () {
+        expect(socket.listeners['stats']).toBeTruthy();
+    });
+
+    it('should render number of clients reported in stats', function () {
+        socket.listeners['stats']({
+            numClients: 99 });
+
+        expect(component.text()).toContain('99 connected clients');
+    });
+});
