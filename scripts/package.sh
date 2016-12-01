@@ -41,6 +41,7 @@ _EOF_
 
 
 cp ./Dockerfile ./build/
+cp ./package.json ./build/
 
 cd build
 echo Building docker image
