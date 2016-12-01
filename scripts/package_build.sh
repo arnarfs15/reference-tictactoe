@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Cleaning...
-rm -rf ./dist
+rm -rf ./build
 
 if [ -z "$GIT_COMMIT" ]; then
   export GIT_COMMIT=$(git rev-parse HEAD)
@@ -13,7 +13,7 @@ export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
 
 echo Building app
-sudo npm build
+npm build
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -22,11 +22,11 @@ if [[ $rc != 0 ]] ; then
 fi
 
 
-cat > ./dist/githash.txt <<_EOF_
+cat > ./build/githash.txt <<_EOF_
 $GIT_COMMIT
 _EOF_
 
-cat > ./dist/public/version.html << _EOF_
+cat > ./build/public/version.html << _EOF_
 <!doctype html>
 <head>
    <title>App version information</title>
@@ -42,10 +42,10 @@ _EOF_
 
 cp ./Dockerfile ./build/
 
-cd dist
+cd build
 echo Building docker image
 
-sudo docker build -t STUDENTNAME/tictactoe:$GIT_COMMIT .
+docker build -t arnarfs15/reference-tictactoe:$GIT_COMMIT .
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -53,7 +53,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-sudo docker push STUDENTNAME/tictactoe:$GIT_COMMIT
+docker push STUDENTNAME/tictactoe:$GIT_COMMIT
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
