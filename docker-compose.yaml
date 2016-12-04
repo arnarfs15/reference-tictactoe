@@ -2,15 +2,17 @@ version: '2'
 services:
   server:
     environment:
+      - 'PGPOST=postgres'
+      - 'PGPORT=5432'
       - 'PORT=3000'
-    image: 'into-docker'
+    image: 'arnarfs15/reference-tictactoe'
     build:
       context: '.'
       dockerfile: 'Dockerfile'
     ports:
       - '3000:3000'
       - '8080:8080'
-    postgres:
+  postgres:
     image: 'postgres'
     environment:
       - POSTGRES_USER=postgres

@@ -1,6 +1,7 @@
 FROM node
 WORKDIR /code
+ENV NODE_PATH .
 COPY . .
 RUN npm install --silent
 EXPOSE 3000
-CMD ["node","index.js"]
+CMD ["node","run.js"]
