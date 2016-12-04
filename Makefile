@@ -24,6 +24,6 @@ docker-test:
 	sudo docker run -it ${IMAGE_TAG} npm test
 postgres:
 	#code taken from readme.md at project root
-	sudo docker run -p 5432:5432 --name pg2 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+	#sudo docker run -p 5432:5432 --name pg2 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 compose:
 	sudo docker-compose up -d --build
