@@ -3,5 +3,5 @@ WORKDIR /code
 ENV NODE_PATH .
 COPY . .
 RUN npm install --silent
-EXPOSE 8080
-CMD ["./scripts/run.sh"]
+EXPOSE 3000
+CMD ["./run.sh"]

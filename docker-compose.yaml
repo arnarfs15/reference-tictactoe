@@ -2,15 +2,13 @@ version: '2'
 services:
   server:
     environment:
-      - 'PGHOST=postgres'
+      - 'PGHOST=process.env.NODE_ENV'
       - 'PGPORT=5432'
-      - 'PORT=8080'
+      - 'PORT=3000'
     image: 'arnarfs15/reference-tictactoe'
-    build:
-      context: '.'
-      dockerfile: 'Dockerfile'
     ports:
       - '8080:8080'
+      - '3000:3000'
     depends_on:
       - 'postgres'
   postgres:
