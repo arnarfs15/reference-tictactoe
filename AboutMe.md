@@ -1,4 +1,4 @@
-.# Arnar Freyr Sævarsson
+#Arnar Freyr Sævarsson
 
 Uppruni:
   - Fæddur á Akranesi 4. júlí 1995
