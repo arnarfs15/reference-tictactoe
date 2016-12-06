@@ -2,7 +2,7 @@ version: '2'
 services:
   server:
     environment:
-      - 'PGHOST=process.env.NODE_ENV'
+      - 'PGHOST=NODE_ENV'
       - 'PGPORT=5432'
       - 'PORT=3000'
     image: 'arnarfs15/reference-tictactoe'
