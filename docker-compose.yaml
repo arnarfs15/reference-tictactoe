@@ -4,11 +4,11 @@ services:
     environment:
       - 'PGHOST=NODE_ENV'
       - 'PGPORT=5432'
-      - 'PORT=3000'
+      - 'PORT=80'
     image: 'arnarfs15/reference-tictactoe'
     ports:
       - '8080:8080'
-      - '3000:3000'
+      - '80:80'
     depends_on:
       - 'postgres'
   postgres:
