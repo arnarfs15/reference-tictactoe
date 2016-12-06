@@ -2,7 +2,7 @@ version: '2'
 services:
   server:
     environment:
-      - 'PGPOST=postgres'
+      - 'PGHOST=postgres'
       - 'PGPORT=5432'
       - 'PORT=3000'
     image: 'arnarfs15/reference-tictactoe'
