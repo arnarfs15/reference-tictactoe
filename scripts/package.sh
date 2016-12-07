@@ -26,6 +26,8 @@ cat > ./build/githash.txt <<_EOF_
 $GIT_COMMIT
 _EOF_
 
+mkdir ./build/public/
+
 cat > ./build/public/version.html << _EOF_
 <!doctype html>
 <head>
@@ -47,7 +49,7 @@ cp ./scripts/run.sh ./build/
 cd build
 echo Building docker image
 
-sudo docker build -t arnarfs15/reference-tictactoe . #$GIT_COMMIT needs to be added later
+docker build -t arnarfs15/reference-tictactoe . #$GIT_COMMIT needs to be added later
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -55,7 +57,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-sudo docker push arnarfs15/reference-tictactoe       #$GIT_COMMIT needs to be added later
+docker push arnarfs15/reference-tictactoe       #$GIT_COMMIT needs to be added later
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
