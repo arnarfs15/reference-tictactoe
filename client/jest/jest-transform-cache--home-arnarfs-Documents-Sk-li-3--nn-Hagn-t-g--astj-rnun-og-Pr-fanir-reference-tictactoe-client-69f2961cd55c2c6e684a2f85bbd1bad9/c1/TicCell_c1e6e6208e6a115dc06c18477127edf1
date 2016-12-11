@@ -1,0 +1,23 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/tictactoe/TicCell.js';exports.default =
+
+function (injected) {
+    const eventRouter = injected('eventRouter');
+    const commandPort = injected('commandPort');
+    const generateUUID = injected('generateUUID');
+
+    class TicCell extends /* istanbul ignore next */_react2.default.Component {
+        constructor() {
+            super();
+            this.state = {};
+
+        }
+        componentWillMount() {
+        }
+        render() {
+            return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'ticcell', __source: { fileName: _jsxFileName, lineNumber: 17 }, __self: this }, /* istanbul ignore next */'CELL'));
+
+
+        }}
+
+    return TicCell;
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

@@ -9,7 +9,6 @@ var tictactoe = require('./tictactoe-handler')(inject({
 
 describe('create game command', function() {
 
-
     var given, when, then;
 
     beforeEach(function(){
@@ -107,7 +106,7 @@ describe('join game command', function () {
 
     });
 
-    it('should emit FullGameJoinAttempted event when game full..implement this', function () {
+    it('should emit FullGameJoinAttempted event when game full...', function () {
 
         given = [
           {

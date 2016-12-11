@@ -1,0 +1,41 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var /* istanbul ignore next */_inject = require('../common/framework/inject'); /* istanbul ignore next */var _inject2 = _interopRequireDefault(_inject);
+var /* istanbul ignore next */_TictactoeGame = require('./TictactoeGame'); /* istanbul ignore next */var _TictactoeGame2 = _interopRequireDefault(_TictactoeGame);
+var /* istanbul ignore next */_TictactoeBoard = require('./TictactoeBoard'); /* istanbul ignore next */var _TictactoeBoard2 = _interopRequireDefault(_TictactoeBoard);
+var /* istanbul ignore next */_TicCell = require('./TicCell'); /* istanbul ignore next */var _TicCell2 = _interopRequireDefault(_TicCell);
+var /* istanbul ignore next */_messageRouter = require('../common/framework/message-router'); /* istanbul ignore next */var _messageRouter2 = _interopRequireDefault(_messageRouter);
+
+var /* istanbul ignore next */_uuid = require('../common/framework/uuid'); /* istanbul ignore next */var _uuid2 = _interopRequireDefault(_uuid);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function TictactoeContext(injected) {
+    const eventRouter = injected('eventRouter');
+    const commandRouter = injected('commandRouter');
+    const queryRouter = injected('queryRouter');
+    const socket = injected('socket');
+
+    const TicCell = /* istanbul ignore next */(0, _TicCell2.default)( /* istanbul ignore next */(0, _inject2.default)({
+        eventRouter,
+        commandPort: commandRouter,
+        generateUUID: /* istanbul ignore next */_uuid2.default }));
+
+
+    const TictactoeBoard = /* istanbul ignore next */(0, _TictactoeBoard2.default)( /* istanbul ignore next */(0, _inject2.default)({
+        TicCell,
+        eventRouter,
+        MessageRouter: /* istanbul ignore next */_messageRouter2.default }));
+
+
+    const TictactoeGame = /* istanbul ignore next */(0, _TictactoeGame2.default)( /* istanbul ignore next */(0, _inject2.default)({
+        TictactoeBoard,
+        eventRouter,
+        commandPort: commandRouter,
+        queryRouter,
+        generateUUID: /* istanbul ignore next */_uuid2.default,
+        socket }));
+
+
+    return {
+        TictactoeGame };
+
+} /* istanbul ignore next */exports.default =
+
+TictactoeContext;

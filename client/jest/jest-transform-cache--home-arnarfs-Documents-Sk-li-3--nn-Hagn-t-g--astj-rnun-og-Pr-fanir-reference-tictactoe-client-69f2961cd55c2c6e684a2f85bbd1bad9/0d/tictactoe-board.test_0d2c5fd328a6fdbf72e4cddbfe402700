@@ -1,0 +1,45 @@
+/* istanbul ignore next */'use strict';var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/tictactoe/tictactoe-board.test.js';var /* istanbul ignore next */_TictactoeBoard = require('./TictactoeBoard'); /* istanbul ignore next */var _TictactoeBoard2 = _interopRequireDefault(_TictactoeBoard);
+var /* istanbul ignore next */_reactDom = require('react-dom'); /* istanbul ignore next */var _reactDom2 = _interopRequireDefault(_reactDom);
+var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_enzyme = require('enzyme');
+
+var /* istanbul ignore next */_FakeView = require('../_test/FakeView'); /* istanbul ignore next */var _FakeView2 = _interopRequireDefault(_FakeView);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe("Tictactoe board", function () {
+
+    var div, component, TicCell;
+
+    var TictactoeBoard;
+
+    beforeEach(function () {
+        TicCell = /* istanbul ignore next */(0, _FakeView2.default)(inject({}));
+
+        TictactoeBoard = /* istanbul ignore next */(0, _TictactoeBoard2.default)(inject({
+            TicCell }));
+
+
+        div = document.createElement('div');
+        component = /* istanbul ignore next */(0, _enzyme.shallow)( /* istanbul ignore next */_react2.default.createElement(TictactoeBoard, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this }), div);
+    });
+
+    it('should render without error', function () {
+
+    });
+
+    it('should render 9 cells', function () {
+        expect(component.find(TicCell).length).toBe(9);
+    });
+
+    it('should pass coordinates to cell one', function () {
+        expect(JSON.stringify(component.find(TicCell).nodes[0].props.coordinates)).toBe(JSON.stringify({ x: 0, y: 0 }));
+    });
+
+    it('should pass coordinates to cell three', function () {
+        expect(JSON.stringify(component.find(TicCell).nodes[2].props.coordinates)).toBe(JSON.stringify({ x: 2, y: 0 }));
+    });
+
+    it('should pass coordinates to cell nine', function () {
+        expect(JSON.stringify(component.find(TicCell).nodes[8].props.coordinates)).toBe(JSON.stringify({ x: 2, y: 2 }));
+    });
+
+});

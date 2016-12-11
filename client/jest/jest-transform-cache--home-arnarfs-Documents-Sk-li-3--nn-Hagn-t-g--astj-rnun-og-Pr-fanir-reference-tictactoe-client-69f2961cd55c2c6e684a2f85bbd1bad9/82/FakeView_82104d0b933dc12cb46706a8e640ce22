@@ -1,0 +1,31 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/_test/FakeView.js';exports.default =
+
+function (injected) {
+    var title = injected('title', true) || 'FAKE';
+
+    var renderedProps = [];
+    var FakeView = /* istanbul ignore next */_react2.default.createClass({ /* istanbul ignore next */displayName: 'FakeView',
+        getInitialState: function () {
+            return this.props;
+        },
+        render: function () {
+            renderedProps.push(this.props);
+            return (
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'fakediv', __source: { fileName: _jsxFileName, lineNumber: 14 }, __self: this }, title));
+
+        },
+        statics: {
+            props: function (idx) {
+                idx = idx !== undefined ? idx : renderedProps.length - 1;
+                return renderedProps[idx];
+            },
+            renderCount: function () {
+                return renderedProps.length;
+            },
+            reset: function () {
+                renderedProps.length = 0;
+            } } });
+
+
+    return FakeView;
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };};

@@ -1,0 +1,158 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/tictactoe/TictactoeGame.js';exports.default =
+
+
+function (injected) {
+    const TictactoeBoard = injected('TictactoeBoard');
+
+    const commandPort = injected('commandPort');
+    const eventRouter = injected('eventRouter');
+    const queryRouter = injected('queryRouter');
+
+    const generateUUID = injected('generateUUID');
+
+    const socket = injected('socket');
+
+    class TictactoeGame extends /* istanbul ignore next */_react2.default.Component {
+        constructor() {
+            super();
+            this.state = {
+                currentGame: {},
+
+
+                openGames: {} };
+
+        }
+        //noinspection JSUnusedGlobalSymbols
+        componentWillMount() {
+
+            socket.on('userAcknowledged', userSession => {
+                this.setState({ session: userSession });
+            });
+
+
+            const gameJoined = gameJoined => {
+
+                if (this.state.session.clientId === gameJoined.userSession.clientId) {
+                    this.setState({
+                        gameOver: undefined,
+                        currentGame: {
+                            gameId: gameJoined.gameId,
+                            side: gameJoined.side } });
+
+
+                }
+
+                var openGames = this.state.openGames;
+                delete openGames[gameJoined.gameId];
+                this.setState({
+                    openGames: openGames });
+
+
+
+            };
+
+            const gameCreated = gameCreated => {
+                gameJoined(gameCreated);
+
+                var openGames = this.state.openGames;
+                if (this.state.session.clientId === gameCreated.userSession.clientId) {
+                    // Game that I created, join & play
+                    this.setState({
+                        gameOver: undefined,
+                        currentGame: {
+                            gameId: gameCreated.gameId,
+                            side: gameCreated.side } });
+
+
+                } else {
+                    // Game that someone else created, add to open games.
+                    openGames[gameCreated.gameId] = gameCreated;
+                    this.setState({
+                        openGames: openGames });
+
+                }
+            };
+
+
+            const gameOver = gameOver => {
+
+                if (this.state.currentGame.gameId === gameOver.gameId) {
+                    this.setState({
+                        gameOver: gameOver,
+                        currentGame: {} });
+
+
+
+                }
+            };
+
+            eventRouter.on('GameJoined', gameJoined);
+            eventRouter.on('GameCreated', gameCreated);
+            eventRouter.on('GameWon', gameOver);
+            eventRouter.on('GameDraw', gameOver);
+
+            queryRouter.on('OpenGamesResult', resultMessage => {
+                /* istanbul ignore next */_lodash2.default.each(resultMessage.resultSet, function (event) {
+                    if (event.type === 'GameCreated') {
+                        gameCreated(event);
+                    }
+                });
+            });
+            commandPort.routeMessage({
+                commandId: generateUUID(),
+                type: "RequestOpenGames" });
+
+        }
+        createGame() {
+            var cmdId = generateUUID();
+            commandPort.routeMessage({
+                commandId: cmdId,
+                type: "CreateGame",
+                gameId: generateUUID() });
+
+        }
+        joinGame(game) {
+            return () => {
+                var cmdId = generateUUID();
+                commandPort.routeMessage({
+                    commandId: cmdId,
+                    type: "JoinGame",
+                    gameId: game.gameId });
+
+            };
+        }
+        render() {
+            var openGames = /* istanbul ignore next */_lodash2.default.map(this.state.openGames, (openGame, idx) => {
+                return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ key: idx, __source: { fileName: _jsxFileName, lineNumber: 126 }, __self: this },
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 127 }, __self: this }, openGame.userSession.userName), /* istanbul ignore next */' ', /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'button', /* istanbul ignore next */{ type: 'button', role: 'button', onClick: this.joinGame(openGame), __source: { fileName: _jsxFileName, lineNumber: 127 }, __self: this }, /* istanbul ignore next */' Join')));
+
+            });
+
+            var gameOver = undefined;
+            var gameView = /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 132 }, __self: this },
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'button', /* istanbul ignore next */{ type: 'button', role: 'button', onClick: this.createGame, __source: { fileName: _jsxFileName, lineNumber: 133 }, __self: this }, /* istanbul ignore next */'Create new game'),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'h2', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 134 }, __self: this }, /* istanbul ignore next */'Open games:'),
+                openGames);
+
+
+            if (this.state.gameOver) {
+                var gameEnd;
+                if (this.state.gameOver.type === 'GameWon') {
+                    gameEnd = /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 141 }, __self: this }, this.state.gameOver.move.side, /* istanbul ignore next */' won the game!');
+                } else {
+                    gameEnd = /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'span', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 143 }, __self: this }, /* istanbul ignore next */'Draw!');
+                }
+                gameOver = /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 145 }, __self: this }, /* istanbul ignore next */'Game over: ', gameEnd, /* istanbul ignore next */' ');
+            }
+            if (this.state.currentGame.gameId) {
+                gameView = /* istanbul ignore next */_react2.default.createElement(TictactoeBoard, /* istanbul ignore next */{ gameId: this.state.currentGame.gameId, mySide: this.state.currentGame.side, __source: { fileName: _jsxFileName, lineNumber: 148 }, __self: this });
+            }
+            return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'TictactoeGame', __source: { fileName: _jsxFileName, lineNumber: 150 }, __self: this },
+                    gameOver,
+                    gameView));
+
+        }}
+
+
+    return TictactoeGame;
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);var /* istanbul ignore next */_lodash = require('lodash'); /* istanbul ignore next */var _lodash2 = _interopRequireDefault(_lodash);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

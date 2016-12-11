@@ -1,0 +1,26 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/home/arnarfs/Documents/Sk\xF3li/3.\xF6nn/Hagn\xFDt g\xE6\xF0astj\xF3rnun og Pr\xF3fanir/reference-tictactoe/client/src/tictactoe/TictactoeBoard.js';exports.default =
+
+
+function (injected) {
+    const TicCell = injected('TicCell');
+
+    class TictactoeBoard extends /* istanbul ignore next */_react2.default.Component {
+        render() {
+            var rows = [];
+            for (var y = 0; y < 3; y++) {
+                var cells = [];
+                for (var x = 0; x < 3; x++) {
+                    cells.push( /* istanbul ignore next */_react2.default.createElement(TicCell, /* istanbul ignore next */{ key: x, coordinates: { x: x, y: y }, gameId: this.props.gameId, mySide: this.props.mySide, __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: this }));
+                }
+                rows.push( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ key: y, className: 'ticrow', __source: { fileName: _jsxFileName, lineNumber: 15 }, __self: this }, cells));
+            }
+
+            return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'TictactoeBoard', __source: { fileName: _jsxFileName, lineNumber: 18 }, __self: this },
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'board', __source: { fileName: _jsxFileName, lineNumber: 19 }, __self: this },
+                        rows)));
+
+
+        }}
+
+    return TictactoeBoard;
+};var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react); /* istanbul ignore next */require('./gameboard.css'); /* istanbul ignore next */function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
