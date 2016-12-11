@@ -5,6 +5,7 @@ module.exports = function (injected) {
     return function (history) {
 
         var gamefull = false;
+        var gamewon = false;
 
         function processEvent(event) {
           if(event.type=="GameJoined"){

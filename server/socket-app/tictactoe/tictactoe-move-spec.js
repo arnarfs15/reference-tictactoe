@@ -25,28 +25,52 @@ describe('Win game command', function() {
 
 
     fit('Should emit player X won when X wins horizontally', function() {
-        given = [];
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];*/
+    });
+
+    it('should emit player O won when O wins Vertically', function() {
+        /*given = [];
         when =
         {
           type: "PlaceMove"
         }
         then = [];
-    });
-
-    it('should emit player O won when O wins Vertically', function() {
-
+        */
     });
 
     it('should emit player X won when X wins from top-left to bottom-right', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 
     it('should emit player O won when O wins from bottom-left to bottom-right', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 
     it('should emit player X won when X wins on last move', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 });
 
@@ -67,7 +91,13 @@ describe('Draw game command', function() {
     });
 
     it('should emit Draw on last X move', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 });
 
@@ -88,14 +118,32 @@ describe('Illegal move command', function() {
     });
 
     it('should emit "Illegal move" when player O makes a move at a field with a move', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 
     it('should emit "Not your turn" when player O makes a move at other turn', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 
     it('should emit "Illegal move" when player X makes a move outside the grid', function() {
-
+        /*given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
+        */
     });
 });
