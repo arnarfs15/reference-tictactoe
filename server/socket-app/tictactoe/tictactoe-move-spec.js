@@ -24,8 +24,13 @@ describe('Win game command', function() {
     });
 
 
-    it('Should emit player X won when X wins horizontally', function() {
-
+    fit('Should emit player X won when X wins horizontally', function() {
+        given = [];
+        when =
+        {
+          type: "PlaceMove"
+        }
+        then = [];
     });
 
     it('should emit player O won when O wins Vertically', function() {
@@ -88,9 +93,9 @@ describe('Illegal move command', function() {
 
     it('should emit "Not your turn" when player O makes a move at other turn', function() {
 
-    })
+    });
 
     it('should emit "Illegal move" when player X makes a move outside the grid', function() {
 
-    })
+    });
 });

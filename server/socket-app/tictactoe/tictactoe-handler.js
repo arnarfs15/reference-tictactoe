@@ -45,7 +45,6 @@ module.exports = function(injected){
                     "PlaceMove": function(cmd){
 
                         // Check here for conditions which prevent command from altering state
-
                         gameState.processEvents(events);
 
                         // Check here for conditions which may warrant additional events to be emitted.

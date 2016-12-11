@@ -10,6 +10,9 @@ module.exports = function (injected) {
           if(event.type=="GameJoined"){
             gamefull=true;
           }
+          else if (event.type=="PlaceMove") {
+
+          }
         }
 
         function processEvents(history) {
@@ -20,10 +23,15 @@ module.exports = function (injected) {
             return gamefull;
         }
 
+        function checkWin(){
+            
+        }
+
         processEvents(history);
 
         return {
             gameFull:gameFull,
+            checkWin:checkWin,
             processEvents: processEvents
         }
     };
