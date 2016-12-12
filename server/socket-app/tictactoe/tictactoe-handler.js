@@ -45,11 +45,19 @@ module.exports = function(injected){
                     "PlaceMove": function(cmd){
 
                         // Check here for conditions which prevent command from altering state
-                        
-                        gameState.processEvents(events);
+                        //gameState.processEvents(events);
 
                         // Check here for conditions which may warrant additional events to be emitted.
-                        eventHandler(events);
+                        //eventHandler(events);
+                        eventHandler([{
+                          gameId: cmd.gameId,
+                          type: "MovePlaced",
+                          user: cmd.user,
+                          name: cmd.name,
+                          timeStamp: cmd.timeStamp,
+                          placement: cmd.placement,
+                          side: cmd.side
+                        }])
                     }
                 };
 
