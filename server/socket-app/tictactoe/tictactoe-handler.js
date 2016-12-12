@@ -46,6 +46,17 @@ module.exports = function(injected){
 
                           // Check here for conditions which prevent command from altering state
                           //gameState.processEvents(events);
+                          if(!gameState.checkTurn(cmd)){
+                              eventHandler([{
+                                gameId: cmd.gameId,
+                                type: "NotYourTurn",
+                                user: cmd.user,
+                                name: cmd.name,
+                                timeStamp: cmd.timeStamp,
+                                side: cmd.side
+                              }])
+                              return ;
+                          }
 
                           // Check here for conditions which may warrant additional events to be emitted.
                           //eventHandler(events);

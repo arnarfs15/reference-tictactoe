@@ -405,13 +405,48 @@ describe('Illegal move command', function() {
     });
 
     it('should emit "Not your turn" when player O makes a move at other turn', function() {
-        /*given = [];
+        given = [
+          {
+            type: "GameCreated",
+            user: {
+              userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29"
+          },
+          {
+              type: "GameJoined",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              side:'O'
+          }
+        ];
         when =
         {
-          type: "PlaceMove"
+          type: "PlaceMove",
+          user: {
+            userName: "Jónas"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:29:31",
+          placement: "[1, 1]",
+          side: 'O'
         }
-        then = [];
-        */
+        then = [
+          {
+            type: "NotYourTurn",
+            user: {
+              userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:31",
+            side: 'O'            
+          }
+        ];
+
     });
 
     it('should emit "Illegal move" when player X makes a move outside the grid', function() {

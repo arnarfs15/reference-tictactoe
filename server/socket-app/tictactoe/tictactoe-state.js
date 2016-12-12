@@ -5,7 +5,8 @@ module.exports = function (injected) {
     return function (history) {
 
         var gamefull = false;
-        var board = new Array(9); // Going to use a board for checking win conditions for now, will likely refactor to event based checking
+        var board = new Array(9); // Going to use a board for checking win conditions for now, will likely refactor to more event based checking
+        var turn = 'X';
 
         function processEvent(event) {
           if(event.type=="GameJoined"){
@@ -20,11 +21,21 @@ module.exports = function (injected) {
                     }
                 }
             }
+            toggleTurn();
           }
         }
 
         function processEvents(history) {
             _.each(history, processEvent);
+        }
+
+        function checkTurn(event){
+            if(event.side == turn){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         function gameFull(){
@@ -43,14 +54,16 @@ module.exports = function (injected) {
                       counter++;
                   }
                   if(event.placement == place){
-                      if(board[val] != otherPlayer){
+                      if(board[val] != otherPlayer()){
                           counter++;
                       }
                   }
               }
+
               if(counter == 3){
                   return true;
               }
+
               counter = 0;
               for(var j = 0; j < 3; j++){
                   var place = "[" + j + ", " + i + "]";
@@ -64,6 +77,7 @@ module.exports = function (injected) {
                       }
                   }
               }
+
               if(counter == 3){
                   return true;
               }
@@ -80,9 +94,19 @@ module.exports = function (injected) {
           }
         }
 
+        function toggleTurn(){
+          if(turn == 'X'){
+            turn = 'O';
+          }
+          else{
+            turn = 'X';
+          }
+        }
+
         processEvents(history);
 
         return {
+            checkTurn:checkTurn,
             gameFull:gameFull,
             checkWin:checkWin,
             processEvents: processEvents
