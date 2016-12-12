@@ -226,6 +226,97 @@ describe('Win game command', function() {
     });
 
     it('should emit player O won when O wins Vertically', function() {
+      given = [
+        {
+          type: "GameCreated",
+          user: {
+            userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+            type: "GameJoined",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29",
+            side:'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:40",
+            placement: "[2, 2]",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:45",
+            placement: "[2, 0]",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:52",
+            placement: "[1, 1]",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:24",
+            placement: "[0, 0]",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:40",
+            placement: "[0, 2]",
+            side: 'X'
+        }
+      ];
+      when =
+      {
+          type: "PlaceMove",
+          user: {
+              userName: "Jónas",
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:30:49",
+          placement: "[1, 0]",
+          side: 'O'
+      }
+      then = [
+          {
+            type: "GameWon",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:49",
+            side: 'O'
+          }
+      ];
 
     });
 

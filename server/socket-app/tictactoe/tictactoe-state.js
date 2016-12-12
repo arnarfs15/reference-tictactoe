@@ -40,10 +40,26 @@ module.exports = function (injected) {
                   var place = "[" + i + ", " + j + "]";
                   val = i*3+j;
                   if(board[val] == event.side){
-                      counter++
+                      counter++;
                   }
                   if(event.placement == place){
                       if(board[val] != 'O'){
+                          counter++;
+                      }
+                  }
+              }
+              if(counter == 3){
+                  return true;
+              }
+              counter = 0;
+              for(var j = 0; j < 3; j++){
+                  var place = "[" + j + ", " + i + "]";
+                  val = j*3+i;
+                  if(board[val] == event.side){
+                      counter++;
+                  }
+                  if(event.placement == place){
+                      if(board[val] != 'X'){
                           counter++;
                       }
                   }
