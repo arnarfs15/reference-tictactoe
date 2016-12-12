@@ -142,17 +142,91 @@ describe('Win game command', function() {
 
 
     it('Should emit player X won when X wins horizontally', function() {
-        
+      given = [
+        {
+          type: "GameCreated",
+          user: {
+            userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+            type: "GameJoined",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29",
+            side:'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:40",
+            placement: "[0, 0]",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:45",
+            placement: "[2, 0]",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:52",
+            placement: "[0, 1]",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas",
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:24",
+            placement: "[2, 1]",
+            side: 'O'
+        }
+      ];
+      when =
+      {
+          type: "PlaceMove",
+          user: {
+              userName: "Arnar",
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:30:40",
+          placement: "[0, 2]",
+          side: 'X'
+      }
+      then = [
+          {
+            type: "GameWon",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:40",
+            side: 'X'
+          }
+      ];
     });
 
     it('should emit player O won when O wins Vertically', function() {
-        /*given = [];
-        when =
-        {
-          type: "PlaceMove"
-        }
-        then = [];
-        */
+
     });
 
     it('should emit player X won when X wins from top-left to bottom-right', function() {
