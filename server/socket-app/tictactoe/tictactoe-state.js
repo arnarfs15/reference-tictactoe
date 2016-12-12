@@ -43,7 +43,7 @@ module.exports = function (injected) {
                       counter++;
                   }
                   if(event.placement == place){
-                      if(board[val] != 'O'){
+                      if(board[val] != otherPlayer){
                           counter++;
                       }
                   }
@@ -59,7 +59,7 @@ module.exports = function (injected) {
                       counter++;
                   }
                   if(event.placement == place){
-                      if(board[val] != 'X'){
+                      if(board[val] != otherPlayer()){
                           counter++;
                       }
                   }
@@ -69,6 +69,15 @@ module.exports = function (injected) {
               }
           }
             return false;
+        }
+
+        function otherPlayer(player){
+          if(player == 'X'){
+            return 'O'
+          }
+          else{
+            return 'X'
+          }
         }
 
         processEvents(history);
