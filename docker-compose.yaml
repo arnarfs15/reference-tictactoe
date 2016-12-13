@@ -6,7 +6,7 @@ services:
       - 'PGHOST=postgres'
       - 'PGPORT=5432'                        #sets the PGport to 5432 for the db
       - 'PORT=80'                            #port 80 for AWS
-    image: 'arnarfs15/reference-tictactoed:${GIT_COMMIT}'   #sets the image being worked on
+    image: 'arnarfs15/reference-tictactoe:${GIT_COMMIT}'   #sets the image being worked on
     ports:
       - '8080:8080'                          #Port 8080
       - '80:80'                              #Port 80, AWS
