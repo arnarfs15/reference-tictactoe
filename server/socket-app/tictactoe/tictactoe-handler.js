@@ -44,8 +44,7 @@ module.exports = function(injected){
                     },
                     "PlaceMove": function(cmd){
 
-                          // Check here for conditions which prevent command from altering state
-                          //gameState.processEvents(events);
+                          //Checks if it's not your turn
                           if(!gameState.checkTurn(cmd)){
                               eventHandler([{
                                 gameId: cmd.gameId,
@@ -58,8 +57,7 @@ module.exports = function(injected){
                               return ;
                           }
 
-                          // Check here for conditions which may warrant additional events to be emitted.
-                          //eventHandler(events);
+                          //checks if a move made won the game
                           if(gameState.checkWin(cmd)){
                               eventHandler([{
                                 gameId: cmd.gameId,
@@ -71,6 +69,8 @@ module.exports = function(injected){
                               }])
                               return ;
                           }
+
+                          //Places the move
                           eventHandler([{
                             gameId: cmd.gameId,
                             type: "MovePlaced",
