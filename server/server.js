@@ -14,7 +14,7 @@ function serverModule(injected) {
     const DbConfig = require('./database.json');
 
     //chooses which environment to use, finds the env or uses dev
-    const dbConfig = DbConfig[process.env.NODE_ENV || 'dev'];
+    const dbConfig = DbConfig[process.env.NODE_ENV || 'development'];
 
     const ChatAppContext = require('./socket-app/server-app-context');
 
