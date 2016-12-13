@@ -2,10 +2,11 @@ version: '2'
 services:
   server:
     environment:
-      - 'PGHOST=NODE_ENV'                    #needs to be fixed
+      - 'NODE_ENV=production'                #Sets the environment to production
+      - 'PGHOST=postgres'
       - 'PGPORT=5432'                        #sets the PGport to 5432 for the db
       - 'PORT=80'                            #port 80 for AWS
-    image: 'arnarfs15/reference-tictactoe'   #sets the image being worked on, $GIT_COMMIT needs to be added later
+    image: 'arnarfs15/reference-tictactoe${GIT_COMMIT}'   #sets the image being worked on
     ports:
       - '8080:8080'                          #Port 8080
       - '80:80'                              #Port 80, AWS
