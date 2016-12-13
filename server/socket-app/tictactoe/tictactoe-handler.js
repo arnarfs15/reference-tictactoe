@@ -77,7 +77,7 @@ module.exports = function(injected){
                             user: cmd.user,
                             name: cmd.name,
                             timeStamp: cmd.timeStamp,
-                            placement: cmd.placement,
+                            coordinates: cmd.coordinates,
                             side: cmd.side
                           }])
                     }

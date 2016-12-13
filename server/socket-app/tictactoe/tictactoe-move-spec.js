@@ -51,7 +51,7 @@ describe('Make move command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:18",
-            placement: "[0, 0]",
+            coordinates: "{ x:0, y:0 }",
             side: 'X'
           };
         then = [
@@ -62,7 +62,7 @@ describe('Make move command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:18",
-            placement: "[0, 0]",
+            coordinates: "{ x:0, y:0 }",
             side: 'X'
           }
         ];
@@ -94,7 +94,7 @@ describe('Make move command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:18",
-          placement: "[0, 0]",
+          coordinates: "{ x:0, y:0 }",
           side: 'X'
         }
       ];
@@ -106,7 +106,7 @@ describe('Make move command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:18",
-          placement: "[1, 1]",
+          coordinates: "{ x:1, y:1 }",
           side: 'O'
         };
       then = [
@@ -117,7 +117,7 @@ describe('Make move command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:18",
-          placement: "[1, 1]",
+          coordinates: "{ x:1, y:1 }",
           side: 'O'
         }
       ];
@@ -167,7 +167,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:40",
-            placement: "[0, 0]",
+            coordinates: "{ x:0, y:0 }",
             side: 'X'
         },
         {
@@ -177,7 +177,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:45",
-            placement: "[2, 0]",
+            coordinates: "{ x:2, y:0 }",
             side: 'O'
         },
         {
@@ -187,7 +187,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:52",
-            placement: "[0, 1]",
+            coordinates: "{ x:0, y:1 }",
             side: 'X'
         },
         {
@@ -197,7 +197,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:24",
-            placement: "[2, 1]",
+            coordinates: "{ x:2, y:1 }",
             side: 'O'
         }
       ];
@@ -209,7 +209,7 @@ describe('Win game command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:40",
-          placement: "[0, 2]",
+          coordinates: "{ x:0, y:2 }",
           side: 'X'
       }
       then = [
@@ -251,7 +251,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:40",
-            placement: "[2, 2]",
+            coordinates: "{ x:2, y:2 }",
             side: 'X'
         },
         {
@@ -261,7 +261,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:45",
-            placement: "[2, 0]",
+            coordinates: "{ x:2, y:0 }",
             side: 'O'
         },
         {
@@ -271,7 +271,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:52",
-            placement: "[1, 1]",
+            coordinates: "{ x:1, y:1 }",
             side: 'X'
         },
         {
@@ -281,7 +281,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:24",
-            placement: "[0, 0]",
+            coordinates: "{ x:0, y:0 }",
             side: 'O'
         },
         {
@@ -291,7 +291,7 @@ describe('Win game command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:40",
-            placement: "[0, 2]",
+            coordinates: "{ x:0, y:2 }",
             side: 'X'
         }
       ];
@@ -303,7 +303,7 @@ describe('Win game command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:49",
-          placement: "[1, 0]",
+          coordinates: "{ x:1, y:0 }",
           side: 'O'
       }
       then = [
@@ -432,7 +432,7 @@ describe('Illegal move command', function() {
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:29:31",
-          placement: "[1, 1]",
+          coordinates: "[1, 1]",
           side: 'O'
         }
         then = [
@@ -443,7 +443,7 @@ describe('Illegal move command', function() {
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:31",
-            side: 'O'            
+            side: 'O'
           }
         ];
 

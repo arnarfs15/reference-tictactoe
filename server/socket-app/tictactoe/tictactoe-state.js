@@ -15,8 +15,9 @@ module.exports = function (injected) {
           else if(event.type=="MovePlaced") {
             for(var i = 0; i < 3; i++){
                 for(var j = 0; j < 3; j++){
-                    var place = "[" + i + ", " + j + "]";
-                    if(event.placement == place){
+                    var place = "{ x:" + i + ", y:" + j + " }"
+                    console.debug(place);
+                    if(event.coordinates == place){
                         board[i*3+j] = event.side;
                     }
                 }
@@ -48,12 +49,12 @@ module.exports = function (injected) {
           for(var i = 0; i < 3; i++){
               counter = 0;
               for(var j = 0; j < 3; j++){
-                  var place = "[" + i + ", " + j + "]";
+                  var place = "{ x:" + i + ", y:" + j + " }"
                   val = i*3+j;
                   if(board[val] == event.side){
                       counter++;
                   }
-                  if(event.placement == place){
+                  if(event.coordinates == place){
                       if(board[val] != otherPlayer()){
                           counter++;
                       }
@@ -66,12 +67,12 @@ module.exports = function (injected) {
 
               counter = 0;
               for(var j = 0; j < 3; j++){
-                  var place = "[" + j + ", " + i + "]";
+                  var place = "{ x:" + j + ", y:" + i + " }"
                   val = j*3+i;
                   if(board[val] == event.side){
                       counter++;
                   }
-                  if(event.placement == place){
+                  if(event.coordinates == place){
                       if(board[val] != otherPlayer()){
                           counter++;
                       }
