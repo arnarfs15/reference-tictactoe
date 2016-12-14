@@ -67,6 +67,7 @@ module.exports = function(injected){
                               timeStamp: cmd.timeStamp,
                               side: cmd.side
                             }])
+                            return;
                           }
 
                           //checks if a move made won the game
