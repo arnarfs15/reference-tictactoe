@@ -31,8 +31,8 @@ module.exports = function (injected) {
             }
         }
 
-        function illegalMove(event){
-            if(board[event.placement] === "X" || board[event.placement] === "O"){
+        function illegalMove(placement){
+            if(board[placement] === "X" || board[placement] === "O"){
                 return true;
             }
             return false;
