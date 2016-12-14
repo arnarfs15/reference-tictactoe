@@ -74,6 +74,23 @@ module.exports = function (injected) {
             return false;
         }
 
+        function checkDraw(event){
+            var counterx = 0, countero = 0;
+            board[event.placement] = event.side
+            for(var i = 0; i < 9; i++){
+                if(board[i] == "X"){
+                    counterx++;
+                }
+                else if(board[i] == "O"){
+                  countero++;
+                }
+            }
+            if(counterx == 5 && countero == 4){
+                return true;
+            }
+            return false;
+        }
+
         function otherPlayer(player){
           if(player == 'X'){
             return 'O'
@@ -99,6 +116,7 @@ module.exports = function (injected) {
             checkTurn:checkTurn,
             gameFull:gameFull,
             checkWin:checkWin,
+            checkDraw:checkDraw,
             processEvents: processEvents
         }
     };

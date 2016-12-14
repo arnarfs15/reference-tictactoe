@@ -83,6 +83,16 @@ module.exports = function(injected){
                               return ;
                           }
 
+                          if(gameState.checkDraw(cmd)){
+                              eventHandler([{
+                                gameId: cmd.gameId,
+                                type: "GameDraw",
+                                name: cmd.name,
+                                timeStamp: cmd.timeStamp
+                              }])
+                              return ;
+                          }
+
                           //Places the move
                           eventHandler([{
                             gameId: cmd.gameId,

@@ -643,13 +643,123 @@ describe('Draw game command', function() {
     });
 
     it('should emit Draw on last X move', function() {
-        /*given = [];
-        when =
+      given = [
         {
-          type: "PlaceMove"
+          type: "GameCreated",
+          user: {
+            userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+            type: "GameJoined",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29",
+            side:'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:40",
+            placement: "4",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:45",
+            placement: "0",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:52",
+            placement: "5",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:24",
+            placement: "3",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:40",
+            placement: "6",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:45",
+            placement: "2",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:49",
+            placement: "1",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:56",
+            placement: "7",
+            side: 'O'
         }
-        then = [];
-        */
+      ];
+      when =
+      {
+        type: "PlaceMove",
+        user: {
+            userName: "Arnar"
+        },
+        name: "TicTacToeMasters",
+        timeStamp: "2014-12-02T11:30:56",
+        placement: "8",
+        side: 'X'
+      }
+      then = [
+        {
+            type: "GameDraw",
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:56"
+        }
+      ];
     });
 });
 
