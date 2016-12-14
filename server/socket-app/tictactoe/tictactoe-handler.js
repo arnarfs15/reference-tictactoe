@@ -57,6 +57,18 @@ module.exports = function(injected){
                               return ;
                           }
 
+                          //checks if the move is legal
+                          if(!gameState.checkLegality(cmd)){
+                            eventHandler([{
+                              gameId: cmd.gameId,
+                              type: "IllegalMove",
+                              user: cmd.user,
+                              name: cmd.name,
+                              timeStamp: cmd.timeStamp,
+                              side: cmd.side
+                            }])
+                          }
+
                           //checks if a move made won the game
                           if(gameState.checkWin(cmd)){
                               eventHandler([{

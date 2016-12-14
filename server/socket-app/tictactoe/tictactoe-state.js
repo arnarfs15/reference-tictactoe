@@ -15,8 +15,7 @@ module.exports = function (injected) {
           else if(event.type=="MovePlaced") {
             for(var i = 0; i < 3; i++){
                 for(var j = 0; j < 3; j++){
-                    var place = "{ x:" + i + ", y:" + j + " }"
-                    console.debug(place);
+                    var place = "{ x:" + i + ", y:" + j + " }";
                     if(event.coordinates == place){
                         board[i*3+j] = event.side;
                     }
@@ -37,6 +36,10 @@ module.exports = function (injected) {
             else{
                 return false;
             }
+        }
+
+        function checkLegality(event){
+            return false;
         }
 
         function gameFull(){
@@ -107,6 +110,7 @@ module.exports = function (injected) {
         processEvents(history);
 
         return {
+            checkLegality:checkLegality,
             checkTurn:checkTurn,
             gameFull:gameFull,
             checkWin:checkWin,

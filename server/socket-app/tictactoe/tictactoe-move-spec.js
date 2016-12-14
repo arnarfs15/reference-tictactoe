@@ -395,13 +395,58 @@ describe('Illegal move command', function() {
     });
 
     it('should emit "Illegal move" when player O makes a move at a field with a move', function() {
-        /*given = [];
+        given = [
+          {
+            type: "GameCreated",
+            user: {
+              userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29"
+          },
+          {
+              type: "GameJoined",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              side:'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              coordinates: "{ x:1, y:0 }",
+              side: 'X'
+          }
+        ];
         when =
         {
-          type: "PlaceMove"
+            type: "PlaceMove",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:34",
+            coordinates: "{ x:1, y: 0 }",
+            side: 'O'
         }
-        then = [];
-        */
+        then = [
+            {
+              type: "IllegalMove",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:34",
+              side: 'O'
+            }
+        ];
+
     });
 
     it('should emit "Not your turn" when player O makes a move at other turn', function() {
