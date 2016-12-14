@@ -46,7 +46,6 @@ module.exports = function (injected) {
         }
 
         function checkWin(event){
-            board[event.placement] = event.side;
             for(var i = 1; i < 9; i = i*3){
                 if(board[i-1] === event.side){
                     if(board[i-1] == board[i] && board[i] == board[i+1]){
@@ -76,7 +75,6 @@ module.exports = function (injected) {
 
         function checkDraw(event){
             var counter = 0;
-            board[event.placement] = event.side
             for(var i = 0; i < 9; i++){
                 if(board[i] == "X" || board[i] == "O"){
                     counter++;

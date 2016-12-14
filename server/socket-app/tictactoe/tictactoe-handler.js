@@ -70,6 +70,17 @@ module.exports = function(injected){
                             return;
                           }
 
+                          //processes the movemade to enter the correct place into the board state
+                          gameState.processEvents([{
+                            gameId: cmd.gameId,
+                            type: "MovePlaced",
+                            user: cmd.user,
+                            name: cmd.name,
+                            timeStamp: cmd.timeStamp,
+                            placement: cmd.placement,
+                            side: cmd.side
+                          }])
+
                           //checks if a move made won the game
                           if(gameState.checkWin(cmd)){
                               eventHandler([{
@@ -92,7 +103,6 @@ module.exports = function(injected){
                               }])
                               return ;
                           }
-
                           //Places the move
                           eventHandler([{
                             gameId: cmd.gameId,
