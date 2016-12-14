@@ -13,7 +13,7 @@ set -e
 
   echo 'Running tests and making XML files'
 
-  mkdir ./test
+  mkdir -p test
   npm run xml-test
 
   echo 'Copying files to AWS'
