@@ -102,17 +102,7 @@ module.exports = function(injected){
                                 timeStamp: cmd.timeStamp
                               }])
                               return ;
-                          }
-                          //Places the move
-                          eventHandler([{
-                            gameId: cmd.gameId,
-                            type: "MovePlaced",
-                            user: cmd.user,
-                            name: cmd.name,
-                            timeStamp: cmd.timeStamp,
-                            placement: cmd.placement,
-                            side: cmd.side
-                          }])
+                          }      
                     }
                 };
 
