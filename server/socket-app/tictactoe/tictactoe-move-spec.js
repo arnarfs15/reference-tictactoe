@@ -495,12 +495,47 @@ describe('Illegal move command', function() {
     });
 
     it('should emit "Illegal move" when player X makes a move outside the grid', function() {
-        /*given = [];
+        given = given = [
+          {
+            type: "GameCreated",
+            user: {
+              userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29"
+          },
+          {
+              type: "GameJoined",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              side:'O'
+          }
+        ];
         when =
         {
-          type: "PlaceMove"
+            type: "PlaceMove",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:33",
+            placement: "11",
+            side: 'X'
         }
-        then = [];
-        */
+        then = [
+          {
+              type: "IllegalMove",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:33",
+              side: 'X'
+          }
+        ];
+
     });
 });
