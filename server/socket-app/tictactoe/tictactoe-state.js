@@ -31,7 +31,7 @@ module.exports = function (injected) {
             }
         }
 
-        function legalMove(event){
+        function illegalMove(event){
             return false;
         }
 
@@ -40,43 +40,21 @@ module.exports = function (injected) {
         }
 
         function checkWin(event){
-          var val, counter;
-          for(var i = 0; i < 3; i++){
-              counter = 0;
-              for(var j = 0; j < 3; j++){
-                  val = i*3+j;
-                  console.debug(board[val]);
-                  if(board[val] == event.side){
-                      counter++;
-                  }
-                  if(event.placement == val){
-                      if(board[val] != otherPlayer()){
-                          counter++;
-                      }
-                  }
-              }
-
-              if(counter == 3){
-                  return true;
-              }
-
-              counter = 0;
-              for(var j = 0; j < 3; j++){
-                  val = j*3+i;
-                  if(board[val] == event.side){
-                      counter++;
-                  }
-                  if(event.placement == val){
-                      if(board[val] != otherPlayer()){
-                          counter++;
-                      }
-                  }
-              }
-
-              if(counter == 3){
-                  return true;
-              }
-          }
+            board[event.placement] = event.side;
+            for(var i = 1; i < 9; i = i*3){
+                if(board[i-1] === event.side){
+                    if(board[i-1] == board[i] && board[i] == board[i+1]){
+                        return true;
+                    }
+                }
+            }
+            for(var i = 0; i < 3; i++){
+                if(board[i] === event.side){
+                    if(board[i] == board[i+3] && board[i+3] == board[i+6]){
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
@@ -101,7 +79,7 @@ module.exports = function (injected) {
         processEvents(history);
 
         return {
-            legalMove:legalMove,
+            illegalMove:illegalMove,
             checkTurn:checkTurn,
             gameFull:gameFull,
             checkWin:checkWin,

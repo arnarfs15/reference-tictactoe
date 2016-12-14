@@ -58,7 +58,7 @@ module.exports = function(injected){
                           }
 
                           //checks if the move is legal
-                          if(gameState.legalMove(cmd)){
+                          if(gameState.illegalMove(cmd)){
                             eventHandler([{
                               gameId: cmd.gameId,
                               type: "IllegalMove",
