@@ -58,7 +58,7 @@ describe('Make move command', function() {
           {
             type: "MovePlaced",
             user: {
-              userName: "Arnar",
+              userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:18",
@@ -113,7 +113,7 @@ describe('Make move command', function() {
         {
           type: "MovePlaced",
           user: {
-            userName: "Jónas",
+            userName: "Jónas"
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:18",
@@ -163,7 +163,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Arnar",
+                userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:40",
@@ -173,7 +173,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Jónas",
+                userName: "Jónas"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:45",
@@ -183,7 +183,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Arnar",
+                userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:52",
@@ -193,7 +193,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Jónas",
+                userName: "Jónas"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:24",
@@ -205,7 +205,7 @@ describe('Win game command', function() {
       {
           type: "PlaceMove",
           user: {
-              userName: "Arnar",
+              userName: "Arnar"
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:40",
@@ -247,7 +247,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Arnar",
+                userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:40",
@@ -257,7 +257,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Jónas",
+                userName: "Jónas"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:45",
@@ -267,7 +267,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Arnar",
+                userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:29:52",
@@ -277,7 +277,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Jónas",
+                userName: "Jónas"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:24",
@@ -287,7 +287,7 @@ describe('Win game command', function() {
         {
             type: "MovePlaced",
             user: {
-                userName: "Arnar",
+                userName: "Arnar"
             },
             name: "TicTacToeMasters",
             timeStamp: "2014-12-02T11:30:40",
@@ -299,7 +299,7 @@ describe('Win game command', function() {
       {
           type: "PlaceMove",
           user: {
-              userName: "Jónas",
+              userName: "Jónas"
           },
           name: "TicTacToeMasters",
           timeStamp: "2014-12-02T11:30:49",
@@ -321,23 +321,183 @@ describe('Win game command', function() {
     });
 
     it('should emit player X won when X wins from top-left to bottom-right', function() {
-        /*given = [];
+        given = [
+          {
+            type: "GameCreated",
+            user: {
+              userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29"
+          },
+          {
+              type: "GameJoined",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              side:'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:40",
+              placement: "0",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:45",
+              placement: "1",
+              side: 'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:52",
+              placement: "4",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:24",
+              placement: "2",
+              side: 'O'
+          },
+        ];
         when =
         {
-          type: "PlaceMove"
+            type: "PlaceMove",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:34",
+            placement: "8",
+            side: 'X'
         }
-        then = [];
-        */
+        then = [
+          {
+            type: "GameWon",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:34",
+            side: 'X'
+          }
+        ];
+
     });
 
     it('should emit player O won when O wins from bottom-left to bottom-right', function() {
-        /*given = [];
+      given = [
+        {
+          type: "GameCreated",
+          user: {
+            userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+            type: "GameJoined",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29",
+            side:'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:40",
+            placement: "8",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:45",
+            placement: "2",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:52",
+            placement: "3",
+            side: 'X'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Jónas"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:24",
+            placement: "4",
+            side: 'O'
+        },
+        {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:40",
+            placement: "5",
+            side: 'X'
+        }
+        ];
         when =
         {
-          type: "PlaceMove"
+          type: "PlaceMove",
+          user: {
+              userName: "Jónas"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:30:45",
+          placement: "6",
+          side: 'O'
         }
-        then = [];
-        */
+        then = [
+            {
+              type: "GameWon",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:45",
+              side: 'O'
+            }
+        ];
+
     });
 
     it('should emit player X won when X wins on last move', function() {
