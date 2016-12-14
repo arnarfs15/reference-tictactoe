@@ -71,7 +71,7 @@ module.exports = function(injected){
                           }
 
                           //processes the movemade to enter the correct place into the board state
-                          gameState.processEvents([{
+                          /*gameState.processEvent({
                             gameId: cmd.gameId,
                             type: "MovePlaced",
                             user: cmd.user,
@@ -79,7 +79,7 @@ module.exports = function(injected){
                             timeStamp: cmd.timeStamp,
                             placement: cmd.placement,
                             side: cmd.side
-                          }])
+                          });*/
 
                           //checks if a move made won the game
                           if(gameState.checkWin(cmd)){
@@ -102,7 +102,17 @@ module.exports = function(injected){
                                 timeStamp: cmd.timeStamp
                               }])
                               return ;
-                          }      
+                          }
+
+                          eventHandler([{
+                            gameId: cmd.gameId,
+                            type: "MovePlaced",
+                            user: cmd.user,
+                            name: cmd.name,
+                            timeStamp: cmd.timeStamp,
+                            placement: cmd.placement,
+                            side: cmd.side
+                          }])
                     }
                 };
 
