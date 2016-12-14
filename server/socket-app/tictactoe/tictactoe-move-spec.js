@@ -501,13 +501,128 @@ describe('Win game command', function() {
     });
 
     it('should emit player X won when X wins on last move', function() {
-        /*given = [];
+        given = [
+          {
+            type: "GameCreated",
+            user: {
+              userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:29:29"
+          },
+          {
+              type: "GameJoined",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:29",
+              side:'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:40",
+              placement: "4",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:45",
+              placement: "0",
+              side: 'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:29:52",
+              placement: "5",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:24",
+              placement: "3",
+              side: 'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:40",
+              placement: "6",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:45",
+              placement: "1",
+              side: 'O'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:49",
+              placement: "8",
+              side: 'X'
+          },
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:56",
+              placement: "7",
+              side: 'O'
+          }
+        ];
         when =
         {
-          type: "PlaceMove"
+          type: "PlaceMove",
+          user: {
+              userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:30:56",
+          placement: "2",
+          side: 'X'
         }
-        then = [];
-        */
+        then = [
+          {
+              type: "GameWon",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:56",
+              side: 'X'
+          }
+        ];
+
     });
 });
 
