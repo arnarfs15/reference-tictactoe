@@ -12,7 +12,7 @@ var consoleReporter = new JasmineConsoleReporter({
     activity: false
 });
 var junitReporter = new reporters.JUnitXmlReporter({
-    savePath: './Tests',
+    savePath: './tests',
     consolidateAll: false
 });
 jasmine.getEnv().addReporter(junitReporter);

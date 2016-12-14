@@ -71,7 +71,9 @@ module.exports = function(injected){
                           }
 
                           //processes the movemade to enter the correct place into the board state
-                          /*gameState.processEvent({
+
+                          //define events as
+                          var events = [{
                             gameId: cmd.gameId,
                             type: "MovePlaced",
                             user: cmd.user,
@@ -79,40 +81,32 @@ module.exports = function(injected){
                             timeStamp: cmd.timeStamp,
                             placement: cmd.placement,
                             side: cmd.side
-                          });*/
+                          }];
 
-                          //checks if a move made won the game
+                          gameState.processEvents(events);
+
+                          //checks if a move made won the game and adds it to events
                           if(gameState.checkWin(cmd)){
-                              eventHandler([{
+                              events.push({
                                 gameId: cmd.gameId,
                                 type: "GameWon",
                                 user: cmd.user,
                                 name: cmd.name,
                                 timeStamp: cmd.timeStamp,
                                 side: cmd.side
-                              }])
-                              return ;
+                              })
                           }
-
-                          if(gameState.checkDraw(cmd)){
-                              eventHandler([{
+                          else if(gameState.checkDraw(cmd)){
+                              events.push({
                                 gameId: cmd.gameId,
                                 type: "GameDraw",
                                 name: cmd.name,
                                 timeStamp: cmd.timeStamp
-                              }])
-                              return ;
+                              })
                           }
 
-                          eventHandler([{
-                            gameId: cmd.gameId,
-                            type: "MovePlaced",
-                            user: cmd.user,
-                            name: cmd.name,
-                            timeStamp: cmd.timeStamp,
-                            placement: cmd.placement,
-                            side: cmd.side
-                          }])
+                          //sends all occurred events into the handler
+                          eventHandler(events);
                     }
                 };
 

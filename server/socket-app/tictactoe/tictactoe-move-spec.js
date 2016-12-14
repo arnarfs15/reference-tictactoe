@@ -214,6 +214,16 @@ describe('Win game command', function() {
       }
       then = [
           {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:40",
+              placement: "2",
+              side: 'X'
+          },
+          {
             type: "GameWon",
             user: {
                 userName: "Arnar"
@@ -308,6 +318,16 @@ describe('Win game command', function() {
       }
       then = [
           {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:49",
+              placement: "3",
+              side: 'O'
+          },
+          {
             type: "GameWon",
             user: {
                 userName: "Jónas"
@@ -392,6 +412,16 @@ describe('Win game command', function() {
             side: 'X'
         }
         then = [
+          {
+              type: "MovePlaced",
+              user: {
+                  userName: "Arnar"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:34",
+              placement: "8",
+              side: 'X'
+          },
           {
             type: "GameWon",
             user: {
@@ -488,6 +518,16 @@ describe('Win game command', function() {
         }
         then = [
             {
+              type: "MovePlaced",
+              user: {
+                  userName: "Jónas"
+              },
+              name: "TicTacToeMasters",
+              timeStamp: "2014-12-02T11:30:45",
+              placement: "6",
+              side: 'O'
+            },
+            {
               type: "GameWon",
               user: {
                   userName: "Jónas"
@@ -576,7 +616,7 @@ describe('Win game command', function() {
               },
               name: "TicTacToeMasters",
               timeStamp: "2014-12-02T11:30:45",
-              placement: "1",
+              placement: "8",
               side: 'O'
           },
           {
@@ -586,7 +626,7 @@ describe('Win game command', function() {
               },
               name: "TicTacToeMasters",
               timeStamp: "2014-12-02T11:30:49",
-              placement: "8",
+              placement: "7",
               side: 'X'
           },
           {
@@ -596,7 +636,7 @@ describe('Win game command', function() {
               },
               name: "TicTacToeMasters",
               timeStamp: "2014-12-02T11:30:56",
-              placement: "7",
+              placement: "1",
               side: 'O'
           }
         ];
@@ -612,6 +652,16 @@ describe('Win game command', function() {
           side: 'X'
         }
         then = [
+          {
+            type: "MovePlaced",
+            user: {
+                userName: "Arnar"
+            },
+            name: "TicTacToeMasters",
+            timeStamp: "2014-12-02T11:30:56",
+            placement: "2",
+            side: 'X'
+          },
           {
               type: "GameWon",
               user: {
@@ -754,6 +804,16 @@ describe('Draw game command', function() {
         side: 'X'
       }
       then = [
+        {
+          type: "MovePlaced",
+          user: {
+              userName: "Arnar"
+          },
+          name: "TicTacToeMasters",
+          timeStamp: "2014-12-02T11:30:56",
+          placement: "8",
+          side: 'X'
+        },
         {
             type: "GameDraw",
             name: "TicTacToeMasters",
