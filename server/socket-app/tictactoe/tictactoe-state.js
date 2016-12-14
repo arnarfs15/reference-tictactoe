@@ -75,17 +75,14 @@ module.exports = function (injected) {
         }
 
         function checkDraw(event){
-            var counterx = 0, countero = 0;
+            var counter = 0;
             board[event.placement] = event.side
             for(var i = 0; i < 9; i++){
-                if(board[i] == "X"){
-                    counterx++;
-                }
-                else if(board[i] == "O"){
-                  countero++;
+                if(board[i] == "X" || board[i] == "O"){
+                    counter++;
                 }
             }
-            if(counterx == 5 && countero == 4){
+            if(counter == 9){
                 return true;
             }
             return false;
