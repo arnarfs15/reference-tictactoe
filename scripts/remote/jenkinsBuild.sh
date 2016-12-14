@@ -11,6 +11,11 @@ set -e
   cd ..
   ./scripts/package.sh  #runs the package script
 
+  echo 'Running tests and making XML files'
+
+  mkdir ./test
+  npm run xml-test
+
   echo 'Copying files to AWS'
 
   scp -o StrictHostKeyChecking=no -i "../arnarfs15.pem" ./docker-compose.yaml ec2-user@52.208.158.45:~/docker-compose.yaml
