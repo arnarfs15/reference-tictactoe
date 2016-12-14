@@ -3,6 +3,7 @@
 /public
 /build
 /help
+/tests
 /.idea/
 todo.md
 *.pem
