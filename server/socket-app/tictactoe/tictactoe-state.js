@@ -32,6 +32,9 @@ module.exports = function (injected) {
         }
 
         function illegalMove(placement){
+            if(placement < 0 || placement > 8){
+                return true;
+            }
             if(board[placement] === "X" || board[placement] === "O"){
                 return true;
             }
