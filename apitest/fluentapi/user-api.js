@@ -54,6 +54,30 @@ module.exports=function(injected){
                 return me;
 
             },
+            createGame:()=>{
+                return me;
+            },
+            expectGameCreated:()=>{
+                return me;
+            },
+            getGame:()=>{
+                return me;
+            },
+            joinGame:(gameId)=>{
+                return me;
+            },
+            expectGameJoined:()=>{
+                return me;
+            },
+            placeMove:(x, y)=>{
+                return me;
+            },
+            expectMoveMade:()=>{
+                return me;
+            },
+            expectGameWon:()=>{
+                return me;
+            },
             then:(whenDoneWaiting)=>{
                 function waitLonger(){
                     if(waitingFor.length>0){
@@ -68,6 +92,7 @@ module.exports=function(injected){
             disconnect:function(){
                 routingContext.socket.disconnect();
             }
+
 
         };
         return me;
