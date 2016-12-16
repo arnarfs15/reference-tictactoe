@@ -9,9 +9,7 @@ module.exports=function(injected){
     function userAPI(){
         var waitingFor=[];
         var commandId=0;
-        var gameId=0;
-        var testUser1 = testUser1;
-        var testUser2 = testUser2;
+        var game = {};
 
 
         var routingContext = RoutingContext(inject({
@@ -62,23 +60,34 @@ module.exports=function(injected){
                 var cmdId = commandId++;
                 gameId = generateUUID();
                 var date = new Date().getTime();
-                routingContext.commandRouter.routeMessage({commandId:cmdId, gameId:gameId, type:"CreateGame", timeStamp: date});
+                game = {commandId:cmdId, gameId:gameId, type:"CreateGame", timeStamp: date}
+                routingContext.commandRouter.routeMessage(game);
                 return me;
             },
             expectGameCreated:()=>{
               waitingFor.push("expectGameCreated");
-              routingContext.eventRouter.on("GameCreated", function(game){;
+              routingContext.eventRouter.on("GameCreated", function(Created){;
+                  //console.log(Created)
                   waitingFor.pop();
               });
                 return me;
             },
             getGame:()=>{
-                return gameId;
+                return game;
             },
-            joinGame:(gameId)=>{
+            joinGame:(gId)=>{
+                var cmdId = commandId++;
+                var date = new Date().getTime();
+                game = {commandId:cmdId, gameId:gId, type: "JoinGame", timeStamp: date, side: 'O'}
+                routingContext.commandRouter.routeMessage(game);
                 return me;
             },
             expectGameJoined:()=>{
+                waitingFor.push("expectGameJoined");
+                routingContext.eventRouter.on("GameJoined", function(Joined){
+                    //console.log(Joined);
+                    waitingFor.pop();
+                });
                 return me;
             },
             placeMove:(x, y)=>{
