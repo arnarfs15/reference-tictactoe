@@ -11,6 +11,7 @@ module.exports = function(injected){
 
                 var cmdHandlers = {
                     "CreateGame": function (cmd) {
+                        console.log("Create Game");
                         eventHandler([{
                             gameId: cmd.gameId,
                             type: "GameCreated",

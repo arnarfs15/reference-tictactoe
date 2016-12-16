@@ -9,6 +9,10 @@ module.exports=function(injected){
     function userAPI(){
         var waitingFor=[];
         var commandId=0;
+        var gameId=0;
+        var testUser1 = testUser1;
+        var testUser2 = testUser2;
+
 
         var routingContext = RoutingContext(inject({
             io,
@@ -55,13 +59,21 @@ module.exports=function(injected){
 
             },
             createGame:()=>{
+                var cmdId = commandId++;
+                gameId = generateUUID();
+                var date = new Date().getTime();
+                routingContext.commandRouter.routeMessage({commandId:cmdId, gameId:gameId, type:"CreateGame", timeStamp: date});
                 return me;
             },
             expectGameCreated:()=>{
+              waitingFor.push("expectGameCreated");
+              routingContext.eventRouter.on("GameCreated", function(game){;
+                  waitingFor.pop();
+              });
                 return me;
             },
             getGame:()=>{
-                return me;
+                return gameId;
             },
             joinGame:(gameId)=>{
                 return me;
