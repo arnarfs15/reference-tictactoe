@@ -10,6 +10,7 @@ module.exports=function(injected){
         var waitingFor=[];
         var commandId=0;
         var game = {};
+        var side;
 
 
         var routingContext = RoutingContext(inject({
@@ -57,11 +58,12 @@ module.exports=function(injected){
 
             },
             createGame:()=>{
-                var cmdId = commandId++;
+                var cmdId = generateUUID();
                 gameId = generateUUID();
                 var date = new Date().getTime();
                 game = {commandId:cmdId, gameId:gameId, type:"CreateGame", timeStamp: date}
                 routingContext.commandRouter.routeMessage(game);
+                side = 'X';
                 return me;
             },
             expectGameCreated:()=>{
@@ -76,10 +78,11 @@ module.exports=function(injected){
                 return game;
             },
             joinGame:(gId)=>{
-                var cmdId = commandId++;
+                var cmdId = generateUUID();
                 var date = new Date().getTime();
                 game = {commandId:cmdId, gameId:gId, type: "JoinGame", timeStamp: date, side: 'O'}
                 routingContext.commandRouter.routeMessage(game);
+                side = 'O';
                 return me;
             },
             expectGameJoined:()=>{
@@ -91,9 +94,20 @@ module.exports=function(injected){
                 return me;
             },
             placeMove:(x, y)=>{
+                var cmdId = generateUUID();
+                var date = new Date().getTime();
+                var gameId = game.gameId;
+                var move = x*3+y;                 //convertion to a one dimensional grid
+                routingContext.commandRouter.routeMessage({commandId: cmdId, gameId: gameId, type: "PlaceMove", placement: move, side: side});
                 return me;
             },
             expectMoveMade:()=>{
+                waitingFor.push("expectMoveMade");
+
+                routingContext.eventRouter.on("MovePlaced", function(Movement){
+                    console.log(Movement);
+                    waitingFor.pop();
+                });
                 return me;
             },
             expectGameWon:()=>{
