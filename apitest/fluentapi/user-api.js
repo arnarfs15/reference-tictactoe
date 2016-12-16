@@ -111,6 +111,12 @@ module.exports=function(injected){
                 return me;
             },
             expectGameWon:()=>{
+                waitingFor.push("expectGameWon");
+
+                routingContext.eventRouter.on("GameWon", function(Win){
+                    console.log(Win);
+                    waitingFor.pop();
+                });
                 return me;
             },
             then:(whenDoneWaiting)=>{
