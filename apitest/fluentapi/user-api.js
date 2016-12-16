@@ -11,8 +11,6 @@ module.exports=function(injected){
         var commandId=0;
         var game = {};
         var side;
-
-
         var routingContext = RoutingContext(inject({
             io,
             env:"test"
@@ -22,6 +20,7 @@ module.exports=function(injected){
         const me = {
             expectUserAck:(cb)=>{
                 waitingFor.push("expectUserAck");
+                
                 routingContext.socket.on('userAcknowledged', function(ackMessage){
                     expect(ackMessage.clientId).not.toBeUndefined();
                     waitingFor.pop();
@@ -35,6 +34,7 @@ module.exports=function(injected){
             },
             expectChatMessageReceived:(message)=>{
                 waitingFor.push("expectChatMessageReceived");
+
                 routingContext.eventRouter.on('chatMessageReceived', function(chatMessage){
                     expect(chatMessage.sender).not.toBeUndefined();
                     if(chatMessage.message===message){
@@ -51,6 +51,7 @@ module.exports=function(injected){
             },
             waitForCleanDatabase:()=>{
                 waitingFor.push("expectChatMessageReceived");
+
                 routingContext.eventRouter.on('databaseCleaned', function(chatMessage){
                     waitingFor.pop();
                 });
@@ -68,6 +69,7 @@ module.exports=function(injected){
             },
             expectGameCreated:()=>{
               waitingFor.push("expectGameCreated");
+
               routingContext.eventRouter.on("GameCreated", function(Created){
                   waitingFor.pop();
               });
@@ -86,6 +88,7 @@ module.exports=function(injected){
             },
             expectGameJoined:()=>{
                 waitingFor.push("expectGameJoined");
+
                 routingContext.eventRouter.on("GameJoined", function(Joined){
                     waitingFor.pop();
                 });
