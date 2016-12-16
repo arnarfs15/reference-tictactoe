@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-  ,/scripts/remote/npm-install
+  ./scripts/remote/npm-install
   ./scripts/package.sh  #runs the package script
 
   echo 'Running tests and making XML files'
