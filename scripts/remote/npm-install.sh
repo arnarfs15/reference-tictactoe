@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
   git clean -dfx        #cleans the directory
   git stash             #stashes all current git changes
