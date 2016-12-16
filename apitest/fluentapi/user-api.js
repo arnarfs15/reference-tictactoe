@@ -68,8 +68,7 @@ module.exports=function(injected){
             },
             expectGameCreated:()=>{
               waitingFor.push("expectGameCreated");
-              routingContext.eventRouter.on("GameCreated", function(Created){;
-                  //console.log(Created)
+              routingContext.eventRouter.on("GameCreated", function(Created){
                   waitingFor.pop();
               });
                 return me;
@@ -88,7 +87,6 @@ module.exports=function(injected){
             expectGameJoined:()=>{
                 waitingFor.push("expectGameJoined");
                 routingContext.eventRouter.on("GameJoined", function(Joined){
-                    //console.log(Joined);
                     waitingFor.pop();
                 });
                 return me;
@@ -98,14 +96,13 @@ module.exports=function(injected){
                 var date = new Date().getTime();
                 var gameId = game.gameId;
                 var move = x*3+y;                 //convertion to a one dimensional grid
-                routingContext.commandRouter.routeMessage({commandId: cmdId, gameId: gameId, type: "PlaceMove", placement: move, side: side});
+                routingContext.commandRouter.routeMessage({commandId: cmdId, gameId: gameId, type: "PlaceMove", timeStamp: date, placement: move, side: side});
                 return me;
             },
             expectMoveMade:()=>{
                 waitingFor.push("expectMoveMade");
 
                 routingContext.eventRouter.on("MovePlaced", function(Movement){
-                    console.log(Movement);
                     waitingFor.pop();
                 });
                 return me;
@@ -114,7 +111,6 @@ module.exports=function(injected){
                 waitingFor.push("expectGameWon");
 
                 routingContext.eventRouter.on("GameWon", function(Win){
-                    console.log(Win);
                     waitingFor.pop();
                 });
                 return me;
