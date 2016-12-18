@@ -9,21 +9,54 @@ export default function (injected) {
         constructor() {
             super();
             this.state = {
-                value: ''
+              location: undefined,
+              value: undefined,
+              gameId: undefined
             }
+
+            this.placeMove = this.placeMove.bind(this);
         }
+
         componentWillMount(){
-            console.debug("let's do this");
+          this.setState({
+              gameId: this.props.gameId
+          });
+          var placement = this.props.coordinates.x + this.props.coordinates.y*3;
+          this.setState({
+              location: placement
+          });
+          const movePlaced = (movePlaced)=>{
+                if(movePlaced.placement === this.state.location) {
+                  if(movePlaced.gameId === this.state.gameId){
+                      this.setState({ value: movePlaced.side});
+                  }
+                }
+          };
+          eventRouter.on('MovePlaced', movePlaced);
+
         }
+
+        placeMove(){
+            var cmdId = generateUUID()
+            var timeStamp = new Date().getTime();
+            var placement = this.props.coordinates.y*3 + this.props.coordinates.x;
+
+            commandPort.routeMessage({
+                commandId:cmdId,
+                gameId: this.props.gameId,
+                type:"PlaceMove",
+                timeStamp:timeStamp,
+                placement: placement,
+                side: this.props.mySide
+            });
+        }
+
         render() {
-            return <div className="ticcell" onClick={this.placeMove}>
+            return <div className="ticcell" onClick={(this.placeMove)} >
                 {this.state.value}
             </div>
         }
 
-        placeMove() {
-            console.debug("PlaceMove NOW");
-        }
     }
     return TicCell;
 }
