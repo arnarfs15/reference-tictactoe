@@ -9,14 +9,20 @@ export default function (injected) {
         constructor() {
             super();
             this.state = {
+                value: ''
             }
         }
         componentWillMount(){
+            console.debug("let's do this");
         }
         render() {
-            return <div className="ticcell">
-                {this.props.side}
+            return <div className="ticcell" onClick={this.placeMove}>
+                {this.state.value}
             </div>
+        }
+
+        placeMove() {
+            console.debug("PlaceMove NOW");
         }
     }
     return TicCell;
