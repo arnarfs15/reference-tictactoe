@@ -16,6 +16,8 @@ describe("Tic Cell", function () {
     var eventRouter = MessageRouter(inject({}));
     var commandsReceived=[];
 
+    var currentGameId = "123456";
+
     commandRouter.on("*", function(cmd){
         commandsReceived.push(cmd);
     } );
@@ -41,12 +43,31 @@ describe("Tic Cell", function () {
     });
 
     it('should record move with matching game id and coordinates ',function(){
+        var passed = false;
+        var event = {
+          commandId: "1",
+          gameId: "123456",
+          type: "PlaceMove",
+          timeStamp: "2016-12-17T22:48:50",
+          placement: "5",
+          side: "X"
+        }
+        commandRouter.routeMessage(event);
+        console.log(eventRouter)
+        console.log(event);
+        eventRouter.on("MovePlaced", function(Move) {
+            console.log(Move);
+            passed = true;
+        });
+        expect(passed).toBe(true);
     });
 
     it('should ignore move with matching gameId but not coordinates',function(){
+
     });
 
     it('should ignore move with matching coordinates, but not matching gameId',function(){
+
     });
 
     it('should issue PlaceMove command with gameId, mySide and coordinates when clicked', ()=>{

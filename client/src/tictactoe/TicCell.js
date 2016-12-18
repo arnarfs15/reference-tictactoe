@@ -15,7 +15,7 @@ export default function (injected) {
         }
         render() {
             return <div className="ticcell">
-                {this.props.key}
+                {this.props.side}
             </div>
         }
     }
