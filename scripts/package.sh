@@ -21,6 +21,8 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
+
+#sets the git_commit tag to an .env file
 cat > ./build/.env <<_EOF_
 GIT_COMMIT=$GIT_COMMIT
 _EOF_
@@ -52,7 +54,7 @@ cp ./scripts/run.sh ./build/
 cd build
 echo Building docker image
 
-docker build -t arnarfs15/reference-tictactoe:$GIT_COMMIT . #$GIT_COMMIT needs to be added later
+docker build -t arnarfs15/reference-tictactoe:$GIT_COMMIT .
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -60,7 +62,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-docker push arnarfs15/reference-tictactoe:$GIT_COMMIT       #$GIT_COMMIT needs to be added later
+docker push arnarfs15/reference-tictactoe:$GIT_COMMIT       
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
